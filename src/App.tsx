@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import Dashboard from './pages/dashboard/Dashboard'
 import LoginPage from './pages/login/LoginPage'
