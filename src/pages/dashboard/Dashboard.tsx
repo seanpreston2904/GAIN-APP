@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 
 const Dashboard:React.FC = () => {
 
-    const [user, loading, error] = useAuthState(auth);
-    const [name, setName] = useState("");
+    //const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    //const [name, setName] = useState("");
     const [photoUrl, setPhotoUrl] = useState("");
     const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const Dashboard:React.FC = () => {
             const q = query(collection(db, "users"), where("uid", "==", user?.uid))
             const doc = await getDocs(q);
             const data = doc.docs[0].data();
-            setName(data.name);
+            //setName(data.name);
             setPhotoUrl(data.photo)
         } catch (err) {
             console.error(err);

@@ -6,7 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const LoginPage:React.FC = () => {
 
-    const [user, loading, error] = useAuthState(auth);
+    //const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
     useEffect(() => {
