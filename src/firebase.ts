@@ -2,7 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, signOut} from "firebase/auth";
 import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
-import firebaseConfig from "../firebase.config.json"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,6 +9,15 @@ import firebaseConfig from "../firebase.config.json"
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBzJ8ulbByPwIB4HwL000XH7d_VszLTKQc",
+    authDomain: "gain-90633.firebaseapp.com",
+    projectId: "gain-90633",
+    storageBucket: "gain-90633.appspot.com",
+    messagingSenderId: "214143056499",
+    appId: "1:214143056499:web:d67bbe5207adfd56f50806"
+}
 
 // Google Authentication
 const googleProvider = new GoogleAuthProvider();
