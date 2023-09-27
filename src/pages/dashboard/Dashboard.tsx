@@ -1,4 +1,34 @@
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth, db, logout } from "../../firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+
 const Dashboard:React.FC = () => {
+
+    const [user, loading, error] = useAuthState(auth);
+    const [name, setName] = useState("");
+    const [photoUrl, setPhotoUrl] = useState("");
+    const navigate = useNavigate();
+
+    // Fetch the user name and photo URL
+    const fetchUserData = async () => {
+        try {
+            const q = query(collection(db, "users"), where("uid", "==", user?.uid))
+            const doc = await getDocs(q);
+            const data = doc.docs[0].data();
+            setName(data.name);
+            setPhotoUrl(data.photo)
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        if(loading) return;
+        if(!user) return navigate("/");
+        fetchUserData();
+    }, [user, loading])
 
     return(
         <>
@@ -10,7 +40,7 @@ const Dashboard:React.FC = () => {
 
                     </div>
 
-                    <img className="rounded-full w-8 h-8 my-auto" src="https://scontent.fwlg3-1.fna.fbcdn.net/v/t39.30808-1/326775342_718626686459665_1606777491572115281_n.jpg?stp=cp0_dst-jpg_p60x60&_nc_cat=106&ccb=1-7&_nc_sid=fe8171&_nc_ohc=lSv5BC1KT0MAX9F8Aq1&_nc_ht=scontent.fwlg3-1.fna&oh=00_AfC1WcFlcZfkuAXdlRNUnLXaXUhSSoEBipllce5zj4xnUQ&oe=65182B3B"/>
+                    <img className="rounded-full w-8 h-8 my-auto" src={photoUrl}/>
 
                 </div>
                 
