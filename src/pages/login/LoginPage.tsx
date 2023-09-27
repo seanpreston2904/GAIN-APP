@@ -21,6 +21,7 @@ const LoginPage:React.FC = () => {
                 <div className="flex-col mx-auto my-auto space-y-10">
                     <h1 className="text-4xl text-center text-slate-700">G<b>AI</b>N</h1>
                     <LoginPanel/>
+                    <h6 className="text-center text-slate-400">Sean Preston 2023 - <a href="https://www.github.com/seanpreston2904" className=" hover:text-slate-600">Github</a></h6>
                 </div>
             </div>
         </>
