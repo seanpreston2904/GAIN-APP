@@ -3,8 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { BoxArrowDownLeft, BoxArrowLeft, GearFill, HouseFill } from "react-bootstrap-icons";
-import AccountModal from "./components/AccountModal";
+import { BoxArrowLeft, GearFill, HouseFill } from "react-bootstrap-icons";
 
 const Dashboard:React.FC = () => {
 
@@ -61,9 +60,6 @@ const Dashboard:React.FC = () => {
                             <img className="rounded-full w-8 h-8 my-auto" src={photoUrl} alt="User Photo" />
                         </button>
                     </div>
-                    
-
-                    
 
                 </div>
                 
