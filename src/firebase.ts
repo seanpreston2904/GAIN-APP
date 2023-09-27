@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut} from "firebase/auth";
+import { GoogleAuthProvider, getAuth, getRedirectResult, signInWithPopup, signInWithRedirect, signOut} from "firebase/auth";
 import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,29 +23,29 @@ const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
-    try{
+    try {
+        await signInWithRedirect(auth, googleProvider);
 
-        // Attempt sign-in with popup and collect response
-        const res = await signInWithPopup(auth, googleProvider);
-        const user = res.user;
+        await getRedirectResult(auth).then((result) => {
+            const user = result!.user;
 
-        // If successful, obtain user information
-        const q = query(collection(db, "users"), where("uid", "==", user.uid));
-        const docs = await getDocs(q);
-
-        // Create new user data if needed
-        if (docs.docs.length === 0){
-
-            await addDoc(collection(db, "users"), {
-                uid: user.uid,
-                name: user.displayName,
-                authProvider: "google",
-                email: user.email,
-                photo: user.photoURL
+            // If successful, obtain user information
+            const q = query(collection(db, "users"), where("uid", "==", user.uid));
+            getDocs(q).then(async (snapshot) => {
+                if (snapshot.docs.length === 0) {
+                    // Create new user data if needed
+                    await addDoc(collection(db, "users"), {
+                        uid: user.uid,
+                        name: user.displayName,
+                        authProvider: "google",
+                        email: user.email,
+                        photo: user.photoURL
+                    });
+                }
+            }).catch((err) => {
+                console.error(err);
             });
-
-        }
-
+        });
     } catch (err) {
         console.error(err);
     }
