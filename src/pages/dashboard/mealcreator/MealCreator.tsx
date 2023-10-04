@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { ArrowRight } from "react-bootstrap-icons"
+import { useState } from "react"
 import TargetsPanel, { TargetsData } from "./components/TargetsPanel";
 import ProteinPanel, { ProteinData } from "./components/ProteinPanel";
 
