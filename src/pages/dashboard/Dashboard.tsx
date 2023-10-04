@@ -78,7 +78,7 @@ const Dashboard:React.FC = () => {
                         </div>
                         <ul aria-labelledby="profilePhoto" className="z-10">
                             <li className='flex p-3 bg-white hover:bg-slate-100 rounded-t-md'>
-                                <button className="z-10 transition-colors flex space-x-2 text-slate-700 w-full">
+                                <button className="z-10 transition-colors flex space-x-2 text-slate-700 w-full" onClick={() => navigate("/accountsettings")}>
                                     <GearFill className='my-auto'/>
                                     <h4>Account Settings</h4>
                                 </button>

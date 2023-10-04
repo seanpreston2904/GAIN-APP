@@ -4,12 +4,17 @@ import Dashboard from './pages/dashboard/Dashboard'
 import LoginPage from './pages/login/LoginPage'
 import MealCreator from './pages/dashboard/mealcreator/MealCreator'
 import Home from './pages/dashboard/home/Home'
+import AccountSettings from './pages/accountSettings/AccountSettings'
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <LoginPage/>,
+    },
+    {
+      path: "accountsettings",
+      element: <AccountSettings/>
     },
     {
       path: "/dashboard",
