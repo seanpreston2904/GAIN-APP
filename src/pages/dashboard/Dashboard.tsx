@@ -35,7 +35,7 @@ const Dashboard:React.FC = () => {
 
     return(
         <>
-            <div className="flex flex-col px-6 h-screen">
+            <div className="flex flex-col px-6 pb-6 h-screen">
                 <div className="flex p-4 space-x-6 z-10">
                     <h2 className="text-3xl text-slate-700 my-auto">G<b>AI</b>N</h2>
 
