@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate, Outlet } from "react-router-dom";
-import { auth, db, logout } from "../../firebase";
-import { query, collection, getDocs, where } from "firebase/firestore";
-import { ArrowLeft, BoxArrowLeft, GearFill, HouseFill, PencilFill } from "react-bootstrap-icons";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "react-bootstrap-icons";
 
 const AccountSettings:React.FC = () => {
 
