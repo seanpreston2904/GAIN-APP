@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { X } from "react-bootstrap-icons"
 
 const PreferenceTag: React.FC<{color: String, label: String, onDelete: Function}> = ({color, label, onDelete}) => {
